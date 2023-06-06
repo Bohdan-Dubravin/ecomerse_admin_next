@@ -1,6 +1,6 @@
-import { useSession, signIn } from 'next-auth/react';
-import Navigation from '@/components/navbar/Navigation';
-import Header from '@/components/header/Header';
+import { useSession, signIn } from "next-auth/react";
+import Navbar from "@/components/ui/navbar/Navbar";
+import Header from "@/components/ui/header/Header";
 type Props = {
   children?: React.ReactNode;
 };
@@ -13,7 +13,7 @@ export default function Layout({ children }: Props) {
         <div className="w-full text-center">
           <button
             className="bg-white rounded-sm p-4"
-            onClick={() => signIn('google')}
+            onClick={() => signIn("google")}
           >
             Sign in
           </button>
@@ -25,7 +25,7 @@ export default function Layout({ children }: Props) {
     <>
       <Header />
       <div className="flex min-h-[calc(100vh-56px)]">
-        <Navigation />
+        <Navbar />
         <div className="flex-grow bg-slate-100">{children}</div>
       </div>
     </>
