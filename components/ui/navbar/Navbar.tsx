@@ -1,9 +1,5 @@
-import { useRouter } from "next/router";
-
 import ActiveLink from "../active-link/ActiveLink";
 const Navbar = () => {
-  const { pathname } = useRouter();
-
   return (
     <div className="text-white p-4 pr-0 bg-neutral-800">
       <nav className="flex flex-col gap-5">

@@ -1,4 +1,6 @@
+import ProductForm from "@/components/screens/product-form/ProductForm";
+
 const NewProduct = () => {
-  return <div>NewProduct</div>;
+  return <ProductForm />;
 };
 export default NewProduct;
