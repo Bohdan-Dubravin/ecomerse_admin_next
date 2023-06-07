@@ -1,17 +1,22 @@
-import Layout from "@/components/layouts/Layout";
+import Layout from '@/components/layouts/Layout';
+import { QueryClient, QueryClientProvider } from 'react-query';
 type Props = {
   children: React.ReactNode;
 };
+
+const queryClient = new QueryClient();
 const MainProvider = ({ children }: Props) => {
   return (
     // <HeadProvider>
     // 	<Provider store={store}>
-    // 		<QueryClientProvider client={queryClient}>
-    // 			<ReduxToast />
-    // 			<AuthProvider Component={{ isOnlyAdmin, isOnlyUser }}>
-    <Layout>{children}</Layout>
-    // 			</AuthProvider>
-    // 		</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      {/* <ReduxToast /> */}
+
+      {/* <AuthProvider Component={{ isOnlyAdmin, isOnlyUser }}> */}
+      <Layout>{children}</Layout>
+
+      {/* </AuthProvider> */}
+    </QueryClientProvider>
     // 	</Provider>
     // </HeadProvider>
   );
