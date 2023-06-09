@@ -7,10 +7,10 @@ import { mongooseConnect } from '@/lib/api/mongoose';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<IProduct>
+  res: NextApiResponse<IProduct[]>
 ) {
   await mongooseConnect();
-  const productDoc: IProduct = await Product.create(req.body);
+  const products: IProduct[] = await Product.find();
 
-  res.json(productDoc);
+  res.json(products);
 }

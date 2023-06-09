@@ -1,16 +1,17 @@
-import { IProductEditInput } from "@/components/screens/products/product-form/product-edit.interface";
-import $api from "@/lib/api/interesptors";
+import { IProductEditInput } from '@/components/screens/products/product-form/product-edit.interface';
+import $api from '@/lib/api/interesptors';
+import { IProduct } from '@/lib/types/product.types';
 
 export const ProductService = {
   // async getBySlug(slug: string) {
   // 	return axiosClassic.get<IActor>(getActorsUrl(`/slug/${slug}`))
   // },
+  async getProducts() {
+    return $api.get<IProduct[]>('/products');
+  },
 
-  // async create() {
-  // 	return $api.post<string>(getActorsUrl(''))
-  // },
   async create(data: IProductEditInput) {
-    return $api.post<string>("/products/new", data);
+    return $api.post<string>('/products/create', data);
   },
 
   // async update(data: IProductEditInput) {
