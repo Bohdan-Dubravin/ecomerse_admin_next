@@ -1,4 +1,4 @@
-import ProductForm from "@/components/screens/product-form/ProductForm";
+import ProductForm from "@/components/screens/products/product-form/ProductForm";
 
 const NewProduct = () => {
   return <ProductForm />;

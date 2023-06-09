@@ -34,6 +34,15 @@ const ProductForm = () => {
           label="Description"
           error={errors.description}
         />
+        <InputField
+          {...register("price", {
+            required: "price is required!",
+          })}
+          placeholder="price"
+          label="Price"
+          type="number"
+          error={errors.price}
+        />
         <button>add</button>
       </form>
     </div>
