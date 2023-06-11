@@ -35,7 +35,7 @@ export const useUpload: TypeUpload = (onChange, folder) => {
       const files = e.target.files;
       if (files?.length) {
         const formData = new FormData();
-        formData.append('image', files[0]);
+        Array.from(files).forEach((file) => formData.append('image', file));
         await mutateAsync(formData);
 
         setTimeout(() => {
