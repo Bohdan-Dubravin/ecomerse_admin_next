@@ -46,7 +46,7 @@ const ProductForm = ({ isEdit = false }) => {
           defaultValue={['']}
           render={({ field: { value, onChange }, fieldState: { error } }) => (
             <UploadField
-              placeholder="Image"
+              placeholder="Upload"
               error={error}
               folder="products"
               image={value[0]}
