@@ -1,0 +1,10 @@
+.upload__input {
+  @apply hidden;
+}
+
+.field {
+}
+
+.label {
+  @apply cursor-pointer hover:border transition border-gray-700 w-24 h-24 text-center flex items-center justify-center gap-1 text-sm rounded bg-gray-200 text-gray-500;
+}

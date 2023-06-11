@@ -1,9 +1,10 @@
 import InputField from '@/components/ui/input/Input';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { IProductEditInput } from './product-edit.interface';
-import { useProductEdit } from './useEditProduct';
+import { useProductForm } from './useProductForm';
+import UploadField from '@/components/ui/input/upload-input/UploadField';
 
-const ProductForm = () => {
+const ProductForm = ({ isEdit = false }) => {
   const {
     handleSubmit,
     register,
@@ -15,12 +16,12 @@ const ProductForm = () => {
     mode: 'onChange',
   });
 
-  const { isLoading, onSubmit } = useProductEdit(setValue);
+  const { isLoading, onSubmit, onEdit } = useProductForm(setValue);
 
   return (
     <div className="bg-white p-8 rounded-xl w-fit m-8">
-      {isLoading && <h1>Load new product...</h1>}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <h1>{isEdit ? 'Edit product' : 'New product'}</h1>
+      <form onSubmit={handleSubmit(isEdit ? onEdit : onSubmit)}>
         <InputField
           {...register('title', {
             required: 'title is required!',
@@ -29,14 +30,7 @@ const ProductForm = () => {
           label="Title"
           error={errors.title}
         />
-        <InputField
-          {...register('description', {
-            required: 'description is required!',
-          })}
-          placeholder="description"
-          label="Description"
-          error={errors.description}
-        />
+
         <InputField
           {...register('price', {
             required: 'price is required!',
@@ -46,7 +40,30 @@ const ProductForm = () => {
           type="number"
           error={errors.price}
         />
-        <button>add</button>
+        <Controller
+          name="images"
+          control={control}
+          defaultValue={['']}
+          render={({ field: { value, onChange }, fieldState: { error } }) => (
+            <UploadField
+              placeholder="Image"
+              error={error}
+              folder="products"
+              image={value[0]}
+              onChange={onChange}
+            />
+          )}
+          rules={{}}
+        />
+        <InputField
+          {...register('description', {
+            required: 'description is required!',
+          })}
+          placeholder="description"
+          label="Description"
+          error={errors.description}
+        />
+        <button>{isEdit ? 'Update' : 'Create'}</button>
       </form>
     </div>
   );

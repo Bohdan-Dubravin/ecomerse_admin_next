@@ -7,5 +7,16 @@
 }
 
 .table__row {
-  @apply focus:outline-none h-16 border border-gray-200 rounded-md hover:bg-neutral-100 hover:border-gray-500;
+  @apply focus:outline-none h-12 border border-gray-200 rounded-md  font-medium;
+}
+
+.table__row:nth-child(even) {
+  @apply bg-neutral-100;
+}
+
+.edit_btn {
+  @apply bg-blue-700 mr-4 text-white p-1 px-2 rounded flex w-16 h-8 items-center justify-between;
+}
+.delete_btn {
+  @apply bg-red-700 text-white p-1 px-2 rounded flex w-16 h-8 items-center justify-between;
 }

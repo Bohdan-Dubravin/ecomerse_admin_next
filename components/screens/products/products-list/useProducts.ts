@@ -1,9 +1,11 @@
 import { useRouter } from 'next/router';
 import { SubmitHandler, UseFormSetValue } from 'react-hook-form';
-import { useMutation, useQuery } from 'react-query';
+import { useMutation, useQuery, useQueryClient } from 'react-query';
 // import { toastr } from 'react-redux-toastr'
 
 import { ProductService } from '@/lib/services/product/product.service';
+import { $toast } from '@/lib/utils/toast';
+import { errorCatch } from '@/lib/api/errorCatch';
 
 // import { toastError } from '@/utils/api/withToastrErrorRedux'
 // import { getKeys } from '@/utils/object/getKeys'
@@ -11,10 +13,7 @@ import { ProductService } from '@/lib/services/product/product.service';
 // import { IActorEditInput } from './actor-edit.interface'
 
 export const useProducts = () => {
-  const { query, push } = useRouter();
-
-  // const actorId = String(query.id);
-
+  const queryClient = useQueryClient();
   const productsData = useQuery(
     'products',
     () => ProductService.getProducts(),
@@ -28,5 +27,24 @@ export const useProducts = () => {
     }
   );
 
-  return { ...productsData };
+  const deleteProduct = useMutation(
+    'delete product',
+    (id: string) => ProductService.delete(id),
+    {
+      onError(error) {
+        $toast.error(errorCatch(error));
+      },
+      onSuccess() {
+        $toast.success('Product deleted');
+
+        queryClient.invalidateQueries({ queryKey: ['products'] });
+      },
+    }
+  );
+
+  const onDelete = async (id: string) => {
+    await deleteProduct.mutateAsync(id);
+  };
+
+  return { ...productsData, onDelete };
 };
