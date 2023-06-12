@@ -3,7 +3,7 @@
 }
 
 .field {
-  @apply my-4 flex justify-between gap-2;
+  @apply my-4 flex  gap-2;
 }
 
 .label {
@@ -16,7 +16,9 @@
 
 .image {
   object-fit: cover;
+  object-position: center;
   width: 100% !important;
+  height: 100% !important;
   position: relative !important;
   height: unset !important;
 }

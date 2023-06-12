@@ -45,6 +45,7 @@ const UploadField = ({
         ) : (
           imgList &&
           imgList[0] &&
+          Array.isArray(imgList) &&
           imgList.map((img) => (
             <Image
               key={img}

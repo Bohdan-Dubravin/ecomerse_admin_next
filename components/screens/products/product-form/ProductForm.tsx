@@ -19,7 +19,7 @@ const ProductForm = ({ isEdit = false }) => {
   const { isLoading, onSubmit, onEdit } = useProductForm(setValue);
 
   return (
-    <div className="bg-white p-8 rounded-xl w-fit m-8">
+    <div className="bg-white p-8 w-full rounded-xl  m-8">
       <h1>{isEdit ? "Edit product" : "New product"}</h1>
       <form onSubmit={handleSubmit(isEdit ? onEdit : onSubmit)}>
         <InputField
