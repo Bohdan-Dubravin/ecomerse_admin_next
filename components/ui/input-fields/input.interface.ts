@@ -1,5 +1,5 @@
-import { CSSProperties, InputHTMLAttributes } from 'react';
-import { FieldError } from 'react-hook-form';
+import { CSSProperties, InputHTMLAttributes } from "react";
+import { FieldError } from "react-hook-form";
 
 export interface FieldProps {
   type?: string;
@@ -12,7 +12,7 @@ type TypeInputPropsField = InputHTMLAttributes<HTMLInputElement> & FieldProps;
 export interface IField extends TypeInputPropsField {}
 export interface IUploadField {
   folder?: string;
-  image?: string;
+  images: string[];
   onChange: (...event: any[]) => void;
   placeholder: string;
   error?: FieldError;
