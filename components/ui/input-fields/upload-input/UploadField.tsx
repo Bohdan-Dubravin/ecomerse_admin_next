@@ -1,12 +1,12 @@
-import cn from "classnames";
-import Image from "next/image";
+import cn from 'classnames';
+import Image from 'next/image';
 
-import styles from "./uploadField.module.css";
+import styles from './uploadField.module.css';
 
-import { useUpload } from "./useUpload";
-import { IUploadField } from "../input.interface";
-import { HeroIcon } from "../../hero-icon/Heroicon";
-import { useEffect, useState } from "react";
+import { useUpload } from './useUpload';
+import { IUploadField } from '../input.interface';
+import { HeroIcon } from '../../hero-icon/Heroicon';
+import { useEffect, useState } from 'react';
 
 const UploadField = ({
   placeholder,
@@ -21,7 +21,7 @@ const UploadField = ({
 
   useEffect(() => {
     setImgList(images);
-    console.log("loaded");
+    console.log('loaded');
   }, [images]);
 
   const { uploadImage, isLoading } = useUpload(setImgList);
@@ -40,23 +40,23 @@ const UploadField = ({
       </label>
 
       <div className={styles.uploadImageContainer}>
-        {isLoading ? (
-          <h2>load images...</h2>
-        ) : (
-          imgList &&
-          imgList[0] &&
-          Array.isArray(imgList) &&
-          imgList.map((img) => (
-            <Image
-              key={img}
-              src={img}
-              alt="new img"
-              fill
-              className={styles.image}
-              unoptimized
-            />
-          ))
-        )}
+        {isLoading && <h2>load images...</h2>}
+        <div className={styles.uploadImageList}>
+          {imgList &&
+            imgList[0] &&
+            Array.isArray(imgList) &&
+            imgList.map((img) => (
+              <div key={img} className={styles.imgContainer}>
+                <Image
+                  src={img}
+                  alt="new img"
+                  fill
+                  className={styles.image}
+                  unoptimized
+                />
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
