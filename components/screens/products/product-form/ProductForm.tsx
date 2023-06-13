@@ -57,7 +57,6 @@ const ProductForm = ({ isEdit = false }) => {
               placeholder="Upload"
               error={error}
               images={value}
-              onChange={onChange}
               setCurrentImages={setCurrentImages}
             />
           )}

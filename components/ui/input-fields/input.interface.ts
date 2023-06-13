@@ -17,7 +17,6 @@ type TypeInputPropsField = InputHTMLAttributes<HTMLInputElement> & FieldProps;
 export interface IField extends TypeInputPropsField {}
 export interface IUploadField {
   images: string[];
-  onChange: (...event: any[]) => void;
   placeholder: string;
   error?: FieldError;
   style?: CSSProperties;

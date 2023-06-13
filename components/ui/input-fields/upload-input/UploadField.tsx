@@ -12,7 +12,7 @@ const UploadField = ({
   error,
   style,
   images,
-  onChange,
+
   setCurrentImages,
 }: IUploadField) => {
   const [imgList, setImgList] = useState(images);
@@ -44,11 +44,13 @@ const UploadField = ({
       </label>
 
       <div className={styles.uploadImageContainer}>
-        <h2 className={styles.title}>Product images</h2>
+        <h2 className={styles.title}>Drag and drop to change images order</h2>
 
         <ReactSortable
           className={styles.uploadImageList}
+          //@ts-ignore
           list={imgList}
+          //@ts-ignore
           setList={updateImgOrder}
         >
           {imgList && imgList[0] && Array.isArray(imgList) ? (
