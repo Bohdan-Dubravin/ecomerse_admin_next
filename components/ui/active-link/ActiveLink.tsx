@@ -13,7 +13,7 @@ const ActiveLink = ({ text, icon, path }: Props) => {
   const { pathname } = useRouter();
   return (
     <Link
-      className={cn("flex gap-2 items-center font-bold pl-2 pr-10 py-1", {
+      className={cn("flex gap-2 items-center font-bold pl-2 pr-20 py-1", {
         "bg-neutral-100 text-neutral-900 rounded-l-lg":
           path === "/" ? pathname === "/" : pathname.includes(path),
       })}

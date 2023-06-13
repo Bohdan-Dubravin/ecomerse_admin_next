@@ -19,7 +19,6 @@ export default async function handler(
     },
     { new: true }
   );
-  console.log(productDoc);
 
   if (productDoc) {
     res.json(productDoc);

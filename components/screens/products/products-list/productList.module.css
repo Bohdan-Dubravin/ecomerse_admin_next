@@ -3,20 +3,36 @@
 }
 
 .thead {
-  @apply border-b bg-white font-medium dark:border-neutral-500 dark:bg-neutral-600;
+  @apply border-b  h-14  border bg-neutral-300 text-neutral-900;
 }
 
 .table__row {
-  @apply focus:outline-none h-12 border border-gray-200 rounded-md  font-medium;
+  @apply focus:outline-none h-12 border border-gray-200 rounded-md  font-light;
 }
 
 .table__row:nth-child(even) {
   @apply bg-neutral-100;
 }
 
+.lastRow {
+  @apply text-left;
+}
+
+.table__head {
+  @apply text-lg;
+}
+
+.last__th {
+  @apply text-right pr-20;
+}
+
+.first__th {
+  @apply pl-20;
+}
+
 .edit_btn {
-  @apply bg-blue-700 mr-4 text-white p-1 px-2 rounded flex w-16 h-8 items-center justify-between;
+  @apply bg-blue-700 mr-4 text-white p-1 px-2  rounded flex w-[72px] h-8 items-center justify-between transition-colors hover:text-blue-600 border-transparent hover:border-blue-600 border hover:bg-white shadow;
 }
 .delete_btn {
-  @apply bg-red-700 text-white p-1 px-2 rounded flex w-16 h-8 items-center justify-between;
+  @apply bg-red-700 text-white p-1 px-2 rounded  flex w-[90px] h-8 items-center justify-between  transition-colors hover:text-red-600 border-transparent hover:border-red-600 border hover:bg-white shadow;
 }

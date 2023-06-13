@@ -1,30 +1,31 @@
-import { errorCatch } from '@/lib/api/errorCatch';
-import { FileService } from '@/lib/services/file/file.service';
-import { $toast } from '@/lib/utils/toast';
-import { useRouter } from 'next/router';
-import { ChangeEvent, useCallback, useMemo, useState } from 'react';
-import { useMutation } from 'react-query';
+import { errorCatch } from "@/lib/api/errorCatch";
+import { FileService } from "@/lib/services/file/file.service";
+import { $toast } from "@/lib/utils/toast";
+import { useRouter } from "next/router";
+import { ChangeEvent, useCallback, useMemo, useState } from "react";
+import { useMutation } from "react-query";
 
 type TypeUpload = (
   onChange: (...event: any[]) => void,
+  setCurrentImages: (...event: any[]) => void,
   folder?: string
 ) => {
   uploadImage: (e: ChangeEvent<HTMLInputElement>) => Promise<void>;
   isLoading: boolean;
 };
 
-export const useUpload: TypeUpload = (useImgList) => {
+export const useUpload: TypeUpload = (useImgList, setCurrentImages) => {
   const [isLoading, setIsLoading] = useState(false);
   const { query } = useRouter();
   const productId = String(query.id);
   const { mutateAsync } = useMutation(
-    'upload file',
+    "upload file",
     (data: FormData) => FileService.upload(data, productId),
     {
       onSuccess({ data }) {
         useImgList(data.images);
-
-        $toast.success('Image uploaded');
+        setCurrentImages(data.images);
+        $toast.success("Image uploaded");
       },
       onError(error) {
         $toast.error(errorCatch(error));
@@ -39,8 +40,8 @@ export const useUpload: TypeUpload = (useImgList) => {
       if (files?.length) {
         const formData = new FormData();
 
-        formData.append('file', files[0]);
-        formData.append('upload_preset', 'paswb695');
+        formData.append("file", files[0]);
+        formData.append("upload_preset", "paswb695");
         await mutateAsync(formData);
 
         setTimeout(() => {

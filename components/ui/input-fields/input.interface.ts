@@ -1,4 +1,9 @@
-import { CSSProperties, InputHTMLAttributes } from "react";
+import {
+  CSSProperties,
+  Dispatch,
+  InputHTMLAttributes,
+  SetStateAction,
+} from "react";
 import { FieldError } from "react-hook-form";
 
 export interface FieldProps {
@@ -11,11 +16,10 @@ type TypeInputPropsField = InputHTMLAttributes<HTMLInputElement> & FieldProps;
 
 export interface IField extends TypeInputPropsField {}
 export interface IUploadField {
-  folder?: string;
   images: string[];
   onChange: (...event: any[]) => void;
   placeholder: string;
   error?: FieldError;
   style?: CSSProperties;
-  isNoImage?: boolean;
+  setCurrentImages: Dispatch<SetStateAction<string[]>>;
 }
