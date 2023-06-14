@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
-import { useProducts } from "./useProducts";
+import { useCategories } from "./useCategories";
 import styles from "./productList.module.css";
 import Link from "next/link";
 import { HeroIcon } from "@/components/ui/hero-icon/Heroicon";
 import { twMerge } from "tailwind-merge";
-const ProductList = () => {
-  const { data, isLoading, isError, onDelete } = useProducts();
+const CategoryList = () => {
+  const { data, isLoading, isError, onDelete } = useCategories();
 
   if (isLoading) {
     return <h1>Loading products...</h1>;
@@ -72,4 +72,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default CategoryList;
